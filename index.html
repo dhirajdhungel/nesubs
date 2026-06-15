@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Nesubs - Digital Services Nepal | Instant Delivery</title>
+    <meta name="title" content="Nesubs - Digital Services Nepal | Instant Delivery" />
+    <meta name="description" content="Buy digital subscriptions, game credits, and gift cards instantly in Nepal. eSewa, Khalti accepted. Instant delivery guaranteed." />
+    <meta name="keywords" content="Nepal digital services, eSewa, Khalti, PUBG UC, Free Fire diamonds, Netflix Nepal, game credits" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nesubs.com/" />
+    <meta property="og:title" content="Nesubs - Digital Services Nepal" />
+    <meta property="og:description" content="Buy digital subscriptions and game credits instantly. eSewa & Khalti accepted." />
+    <meta property="og:image" content="/icon-512.svg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nesubs.com/" />
+    <meta property="twitter:title" content="Nesubs - Digital Services Nepal" />
+    <meta property="twitter:description" content="Buy digital subscriptions and game credits instantly. eSewa & Khalti accepted." />
+    <meta property="twitter:image" content="/icon-512.svg" />
+    
+    <!-- PWA Primary Color -->
+    <meta name="theme-color" content="#0A64BC" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Nesubs" />
+    
+    <!-- Mobile Optimization -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Security -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator && !window.location.hostname.includes('localhost') && window.location.hostname !== '127.0.0.1' && window.location.hostname !== '[::1]') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+              console.log('ServiceWorker registration successful');
+            })
+            .catch((err) => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

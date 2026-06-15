@@ -1,0 +1,7 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {},
+  "compilerOptions": {
+    "lib": ["dom", "es2022"]
+  }
+}

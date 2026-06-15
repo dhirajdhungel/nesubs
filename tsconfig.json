@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "checkJs": false,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "useUnknownInCatchVariables": false,
+  "allowImportingTsExtensions": true,
+  "noEmit": true,
+    "types": ["vite/client"]
+  },
+  "include": ["src", "utils", "supabase/functions", "db", "types"],
+  "exclude": ["node_modules", "dist"]
+}

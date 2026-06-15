@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  icon      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  products  Product[]
+}
+
+model Product {
+  id            String   @id @default(uuid())
+  name          String
+  description   String
+  image         String
+  categoryId    String
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+
+  // JSON fields for complex nested structures to maintain compatibility
+  packages      Json     @default("[]")
+  packageGroups Json?    @default("[]")
+  customFields  Json     @default("[]")
+
+  category      Category @relation(fields: [categoryId], references: [id])
+}
+
+model Order {
+  id            String   @id @default(uuid())
+  productId     String
+  productName   String
+  productImage  String
+  packageName   String
+  price         Float
+  customerName  String
+  customerEmail String
+  customerPhone String
+  userId        String?
+  
+  // JSON field for custom checkout data
+  customFields  Json     @default("{}")
+  credentials   Json?
+  
+  status        String   @default("pending")
+  paymentMethod String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  username      String?  @unique
+  phone         String?
+  nesubsEmail   String?
+  role          String   @default("user")
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  lastLoginAt   DateTime?
+}
+
+model AdminSession {
+  id        String   @id // The session token
+  email     String
+  name      String
+  role      String   @default("super_admin")
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model UserSession {
+  id        String   @id // The session token
+  userId    String
+  email     String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+// Preserve existing KV store table to prevent data loss
+model kv_store_f9b2f90e {
+  key   String @id
+  value Json
+}
