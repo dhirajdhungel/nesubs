@@ -405,9 +405,6 @@ export function AdminPaymentHistoryPage() {
               >
                 <option value="all">All Channels</option>
                 <option value="Fonepay">Fonepay</option>
-                <option value="Nepal Pay">Nepal Pay</option>
-                <option value="eSewa">eSewa</option>
-                <option value="Khalti">Khalti</option>
               </select>
             </div>
 
@@ -569,7 +566,7 @@ export function AdminPaymentHistoryPage() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 rounded-lg text-xs font-semibold text-gray-700">
-                          {item.bankName || "Nepal Pay"}
+                          {item.bankName || "Fonepay"}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right">
@@ -632,7 +629,7 @@ export function AdminPaymentHistoryPage() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-gray-500 uppercase">Gateway Setup</p>
-                  <p className="font-semibold text-gray-900 mt-0.5">{selectedPayment.paymentMethod || "Nepal Pay"}</p>
+                  <p className="font-semibold text-gray-900 mt-0.5">{selectedPayment.paymentMethod || "Fonepay"}</p>
                 </div>
                 <div className="col-span-2 border-t border-gray-200/60 pt-3 mt-1">
                   <p className="text-xs font-bold text-gray-500 uppercase">Customer Information</p>
@@ -671,13 +668,7 @@ export function AdminPaymentHistoryPage() {
                       onChange={(e) => setEditBankName(e.target.value)}
                       className="w-full h-10 px-3 border border-gray-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-[#0A64BC]"
                     >
-                      <option value="Nepal Pay">Nepal Pay</option>
                       <option value="Fonepay">Fonepay</option>
-                      <option value="eSewa">eSewa</option>
-                      <option value="Khalti">Khalti</option>
-                      <option value="ConnectIPS">ConnectIPS</option>
-                      <option value="Nabil Bank">Nabil Bank</option>
-                      <option value="Global IME">Global IME</option>
                     </select>
                   </div>
                 </div>

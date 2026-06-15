@@ -165,7 +165,7 @@ export function PaymentModal({
         customerEmail: customerEmail,
         customerPhone: "",
         customFields: dynamicFormData,
-        paymentMethod: "Nepal Pay",
+        paymentMethod: "Fonepay",
         userId: user?.id, // Add user ID to order
       };
 
@@ -311,7 +311,7 @@ export function PaymentModal({
                 {step === "form"
                   ? "Fill in the details to proceed"
                   : step === "qr"
-                  ? "Complete your payment via Nepal Pay"
+                  ? "Complete your payment via Fonepay"
                   : "Your payment has been successfully confirmed"}
               </p>
             </div>

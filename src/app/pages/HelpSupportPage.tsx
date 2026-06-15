@@ -58,7 +58,7 @@ export function HelpSupportPage() {
     {
       id: "2",
       question: "What payment methods do you accept?",
-      answer: "We accept payment through Fonepay, and other popular Nepal payment methods. All transactions are secure and encrypted."
+      answer: "We accept payments through Fonepay. All transactions are secure and encrypted."
     },
     {
       id: "3",

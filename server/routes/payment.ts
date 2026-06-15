@@ -44,7 +44,7 @@ app.get("/history", async (c) => {
         customerPhone: o.customerPhone,
         paymentMethod: o.paymentMethod,
         transactionRef: payDetails.transactionId || `TXN-${o.id.substring(0, 8)}`,
-        bankName: payDetails.bankName || o.paymentMethod || "Nepal Pay",
+        bankName: payDetails.bankName || o.paymentMethod || "Fonepay",
         remarks: payDetails.remarks || "",
         updatedAt: o.updatedAt,
         transactionId: payDetails.transactionId || null,
