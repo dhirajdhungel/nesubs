@@ -14,7 +14,7 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { getOrders, getProducts, Order, Product, API_BASE_URL, publicAnonKey } from "../utils/api";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -45,7 +45,9 @@ type OrderStatus = keyof typeof statusConfig;
 
 export function MyOrdersPage() {
   const { user, loading: authLoading, isAuthenticated } = useAuth();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const highlightedOrderId = searchParams.get("orderId");
+  const [searchQuery, setSearchQuery] = useState(highlightedOrderId || "");
   const [selectedStatus, setSelectedStatus] = useState<
     OrderStatus | "all"
   >("all");
@@ -95,6 +97,9 @@ export function MyOrdersPage() {
           })
         );
         setCredentials(creds);
+        if (highlightedOrderId) {
+          setExpandedCreds((prev) => ({ ...prev, [highlightedOrderId]: true }));
+        }
       } catch (err) {
         console.error("Error fetching orders:", err);
         setError("Failed to load orders. Please try again later.");
@@ -312,10 +317,14 @@ export function MyOrdersPage() {
               const customFieldEntries = Object.entries(order.customFields || {});
               const firstField = customFieldEntries[0];
 
+              const isHighlighted = order.id === highlightedOrderId;
+
               return (
                 <div
                   key={order.id}
-                  className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-all"
+                  className={`bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-all ${
+                    isHighlighted ? "ring-2 ring-green-500 border-green-200 bg-green-50/10 shadow-lg shadow-green-100" : ""
+                  }`}
                 >
                   {/* Order Header */}
                   <div className="flex items-start gap-3 mb-3">
@@ -360,6 +369,11 @@ export function MyOrdersPage() {
                         ]?.label || order.status
                       }
                     </div>
+                    {isHighlighted && (
+                      <span className="px-2.5 py-1 bg-green-500 text-white rounded-full text-[10px] font-bold uppercase tracking-wider animate-pulse shadow-sm">
+                        New Order
+                      </span>
+                    )}
                   </div>
 
                   {/* Order Details */}

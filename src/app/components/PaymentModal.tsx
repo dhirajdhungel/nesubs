@@ -7,6 +7,7 @@ import { CustomField } from "../utils/api";
 import { useAuth } from "../contexts/AuthContext";
 import { LoginModal } from "./LoginModal";
 import { SignupModal } from "./SignupModal";
+import { useNavigate } from "react-router";
 
 interface HolidayModeConfig {
   enabled: boolean;
@@ -37,6 +38,7 @@ export function PaymentModal({
   productImage,
 }: PaymentModalProps) {
   const { user, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [paymentId, setPaymentId] = useState("");
   const [isChecking, setIsChecking] = useState(false);
   const [step, setStep] = useState<"form" | "qr" | "success">("form");
@@ -690,12 +692,16 @@ export function PaymentModal({
                   </p>
                 </div>
 
-                {/* Close Button */}
+                {/* View Order Details Button */}
                 <button
-                  onClick={onClose}
-                  className="w-full py-4 rounded-xl font-bold text-white text-lg bg-[#0A64BC] hover:bg-[#084d92] shadow-lg active:scale-[0.98] transition-all min-h-[56px] mt-6"
+                  onClick={() => {
+                    onClose();
+                    navigate(`/orders?orderId=${orderId}`);
+                  }}
+                  className="w-full py-4 rounded-xl font-bold text-white text-lg bg-green-600 hover:bg-green-700 shadow-lg active:scale-[0.98] transition-all min-h-[56px] mt-6 flex items-center justify-center gap-2"
                 >
-                  Close
+                  View Order Details
+                  <ArrowRight className="w-5 h-5" />
                 </button>
               </>
             )}
