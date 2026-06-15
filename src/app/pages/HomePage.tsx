@@ -84,44 +84,42 @@ export function HomePage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Categories Horizontal Selector / Tabs */}
-      <section className="bg-white py-6 border-b border-gray-200 sticky top-0 z-20 shadow-xs">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="px-4 mb-4 flex items-center justify-between">
+      {/* Categories Grid Selector / Tabs (Not Sticky, 4 Columns on Mobile) */}
+      <section className="bg-white py-6 border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-4">
+          <div className="mb-4 flex items-center justify-between">
             <h2 className="font-bold text-gray-900 text-base lg:text-lg">Product Categories</h2>
           </div>
           
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex content-center gap-3 px-4 pb-2">
-              {/* All Services Pill */}
-              <button
-                onClick={() => setSelectedCategoryId(null)}
-                className="flex-shrink-0 w-24 lg:w-32 focus:outline-none cursor-pointer"
-                type="button"
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3 lg:gap-4">
+            {/* All Services Pill */}
+            <button
+              onClick={() => setSelectedCategoryId(null)}
+              className="w-full focus:outline-none cursor-pointer"
+              type="button"
+            >
+              <div
+                className={`rounded-2xl p-4 aspect-square flex flex-col items-center justify-center transition-all duration-300 border-2 w-full ${
+                  selectedCategoryId === null
+                    ? "bg-[#0A64BC] text-white border-[#0A64BC] shadow-lg scale-105"
+                    : "bg-white text-gray-700 border-gray-100 hover:border-blue-200 hover:bg-blue-50/20 hover:shadow-md hover:scale-102"
+                }`}
               >
-                <div
-                  className={`rounded-2xl p-4 aspect-square flex flex-col items-center justify-center transition-all duration-300 border-2 ${
-                    selectedCategoryId === null
-                      ? "bg-[#0A64BC] text-white border-[#0A64BC] shadow-lg scale-105"
-                      : "bg-white text-gray-700 border-gray-100 hover:border-blue-200 hover:bg-blue-50/20 hover:shadow-md hover:scale-102"
-                  }`}
-                >
-                  <span className="text-3xl mb-2">🛍️</span>
-                  <span className={`text-xs lg:text-sm font-semibold text-center ${selectedCategoryId === null ? "text-white" : "text-gray-950"}`}>
-                    All Services
-                  </span>
-                </div>
-              </button>
+                <span className="text-4xl lg:text-5xl mb-2">🛍️</span>
+                <span className={`text-xs lg:text-sm font-semibold text-center transition-colors ${selectedCategoryId === null ? "text-white" : "text-gray-900"}`}>
+                  All Services
+                </span>
+              </div>
+            </button>
 
-              {categories.map((category) => (
-                <CategoryCard
-                  key={category.id}
-                  category={category}
-                  onClick={() => setSelectedCategoryId(category.id)}
-                  isActive={selectedCategoryId === category.id}
-                />
-              ))}
-            </div>
+            {categories.map((category) => (
+              <CategoryCard
+                key={category.id}
+                category={category}
+                onClick={() => setSelectedCategoryId(category.id)}
+                isActive={selectedCategoryId === category.id}
+              />
+            ))}
           </div>
         </div>
       </section>
