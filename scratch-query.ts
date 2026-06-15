@@ -6,8 +6,8 @@ async function test() {
   const users = await prisma.user.findMany();
   console.log("USERS IN DB:", JSON.stringify(users, null, 2));
 
-  const orders = await prisma.order.findMany();
-  console.log("ORDERS IN DB:", JSON.stringify(orders, null, 2));
+  const products = await prisma.product.findMany();
+  console.log("PRODUCTS IN DB:", JSON.stringify(products, null, 2));
 }
 
 test();
