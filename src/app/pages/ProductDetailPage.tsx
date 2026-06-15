@@ -297,11 +297,11 @@ export function ProductDetailPage() {
 
       {/* Sticky Bottom CTA Bar */}
       {((product.packages && product.packages.length > 0) || (product.packageGroups && product.packageGroups.length > 0)) && (
-        <div className="fixed bottom-16 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-40 animate-in slide-in-from-bottom duration-300">
-          <div className="max-w-[1200px] mx-auto px-4 py-4">
+        <div className="fixed bottom-20 lg:bottom-6 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-[calc(100%-2rem)] lg:max-w-[1168px] bg-white/95 backdrop-blur-md border border-gray-200/80 shadow-2xl rounded-3xl z-40 animate-in slide-in-from-bottom duration-300">
+          <div className="px-6 py-4">
             <div className="flex items-center gap-4">
               {/* Price Info */}
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-0.5">
                   Total Price
                 </p>
